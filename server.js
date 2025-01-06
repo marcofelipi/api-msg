@@ -4,11 +4,17 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
+const cors = require('cors');
+
 app.use(cors({
-    origin: '*', // Permite todas as origens
-    methods: ['GET', 'POST'], // Permite GET e POST
-    allowedHeaders: ['Content-Type']
+    origin: '*', // Permite requisições de qualquer origem. Altere para um domínio específico em produção, se necessário.
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Permite os métodos HTTP que você deseja aceitar
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], // Permite cabeçalhos usados em requisições
+    exposedHeaders: ['Authorization'], // Permite que o cliente acesse cabeçalhos específicos na resposta
+    credentials: true, // Permite o envio de cookies ou credenciais de autenticação
+    optionsSuccessStatus: 204 // Status para respostas de OPTIONS (usado por alguns navegadores)
 }));
+
 
 // Middleware para parsing de JSON
 app.use(express.json());
