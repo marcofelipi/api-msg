@@ -1,6 +1,7 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
-
+const cors = require('cors');
+app.use(cors());
 const app = express();
 const port = 3000;
 
@@ -20,7 +21,6 @@ app.post('/api/contact', async (req, res) => {
         return res.status(400).json({ error: 'Preencha todos os campos obrigatórios!' });
     }
 
-    // Configuração do Nodemailer
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
