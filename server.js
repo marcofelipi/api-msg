@@ -4,7 +4,12 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
-app.use(cors());
+app.use(cors({
+    origin: '*', // Permite todas as origens
+    methods: ['GET', 'POST'], // Permite GET e POST
+    allowedHeaders: ['Content-Type']
+}));
+
 // Middleware para parsing de JSON
 app.use(express.json());
 
