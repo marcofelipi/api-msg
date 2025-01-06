@@ -1,10 +1,10 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
-app.use(cors());
 const app = express();
 const port = 3000;
 
+app.use(cors());
 // Middleware para parsing de JSON
 app.use(express.json());
 
